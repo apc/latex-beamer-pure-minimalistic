@@ -49,11 +49,11 @@
 
 
 \defbeamertemplate*{section in toc}{pureminimalistic}{%
-  \hspace{0.5em} \inserttocsectionnumber.~\inserttocsection
+  \alert{\inserttocsectionnumber}\hspace{0.5em}\inserttocsection
 }
 
 \defbeamertemplate*{subsection in toc}{pureminimalistic}{%
-  \hspace{1.5em} \inserttocsectionnumber.\inserttocsubsectionnumber~\inserttocsubsection\par
+  \hspace{1em} \inserttocsectionnumber.\inserttocsubsectionnumber\hspace{0.5em}\inserttocsubsection\par
 }
 
 \defbeamertemplate*{subsubsection in toc}{pureminimalistic}{% No one should use subsubsections in a presentation
@@ -88,22 +88,22 @@
   \begin{beamercolorbox}[sep=0ex,wd=\textwidth,dp=1ex]{headline}
     \vskip 3pt
     \hfill\logotitle\par% \logotitle is defined in outertheme
-    \vskip 75pt
+    \vskip 55pt
     \parbox{\linewidth}{%
       \begin{beamercolorbox}[wd=\textwidth]{title}%
-        {\inserttitle}%
+        {\ifdefined\uppercaps\uppercaps{\inserttitle}\else\inserttitle\fi}%
       \end{beamercolorbox}
 
       \begin{beamercolorbox}[wd=\textwidth,dp=1ex]{author}%
         \vskip 3pt
         \ifx\insertsubtitle\@empty%
           \else%
-          {\usebeamerfont{subtitle}\insertsubtitle}\vskip 2pt%
+          {\usebeamerfont{subtitle}\insertsubtitle}%
         \fi%
-        \usebeamerfont{author}\usebeamercolor{author}\insertauthor $\quad$
+        \usebeamerfont{author}\usebeamercolor{author}\insertauthor
         \ifx\insertinstitute\@empty%
-          \else%
-          {\usebeamerfont{institute}\insertinstitute $\quad$}%
+        \else%
+          $~~|~$ {\usebeamerfont{institute}\insertinstitute}%
         \fi%
         \ifx\insertdate\@empty%
           \else%
